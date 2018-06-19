@@ -112,14 +112,22 @@ function submitInput(){
                     +"\n \n Charge - Charge at them.\n \n Taunt - Let them come at you.\n \n Jump - Into the ocean"
                 }
             }
-            if(villian <= -1 && hunter <= -1 && cursedOne <= -1 && archaeologist <= -1 && treasureHunter <= -1){
+            if(villain <= -1 && hunter <= -1 && cursedOne <= -1 && archaeologist <= -1 && treasureHunter <= -1){
                --next;
                alert("invalid response");
             }
         }
         if(next == 3){
             if(characterClass == "treasureHunter"){
-                output.value = output.value + "\n \nYou are awaken to the sound of a horn and rushing sailors. You walk out onto the deck and behold the island. It was a massive jungle, with on large montain at its core. There was no hints that man ever was here, but you know better. There is defiently a rare treasure here."
+                output.value = output.value + "\n \nYou are awaken to the sound of a horn and rushing sailors. You walk out onto the deck and behold the island. It was a massive jungle, with on large montain at its core. There was no hints that man ever was here, but you know better."
+                +"There is defiently a rare treasure here."
+                +"\n \nThey take you to the island by row boat, dropping you off on a beach. The rocky sand leads into a large jungle. The beach goes only a mile or two in either direction before it turns into massive cliffs."
+                +"\n \nSailor-\"We'll be back here in two weeks. Until then, good luck.\""
+                +"\n \nYou watch them row towards the steam boat, leaving you alone on the beach, hopefully you packed well."
+                +"\n \n Walk the beach - Travel the beach, perhaps there is treasure on this beach."
+                +"\n \n Go for a swim - Swim into the ocean, leaving your pack behind. Maybe you'll find treasure under the sea."
+                +"\n \n Walk into the jungle - Start the search for treasure in the dense jungle."
+                +"\n \n Set up camp - Though you still have several hours before dark, might as well set up a base of operations."
             }
             if(characterClass == "archaeologist"){
                 
@@ -132,6 +140,41 @@ function submitInput(){
             }
             if(characterClass == "villain"){
                 
+            }
+        }
+        if(next == 4){
+            if(characterClass == "treasureHunter"){
+                var beach = input.value.search("Walk the beach");
+                var swim = input.value.search("Go for a swim");
+                var jungle = input.value.search("Walk into the jungle");
+                var camp = input.value.search("Set up camp");
+                if(beach > -1){
+                    output.value = output.value + "\n \nYou walk the beach, find a few shells, but no treasure. Your not surprised, treasure hardly washes up on the shore."
+                    +"\n \n Rest on the beach - The breeze feels nice and thee sun isn't baking you."
+                    +"\n \n Go for a swim - See if your luck changes in the ocean. Leaves your pack behind."
+                    +"\n \n Walk into the jungle - The jungle has to be where the treasure is."
+                    +"\n \n Climb the cliffs - Since you are by the cliffs anyway, would it hurt to climb them?"
+                }
+                if(swim > -1){
+                    output.value = output.value + "\n \nThe ocean was rather pleasant. The water was refreshingly cold, and the wind was fair. Under the water, you can see beautiful unspoiled coral reefs."
+                    +"It is perfect. You pop your head out of the water, after just having watched a seaturtle. You can see the island, but it is a couple miles away. You must have been enjoying the water a bit much."
+                    +"As you swim back, you notice a glimmer of coins."
+                    +"\n \n Treasure! - get those coins!"
+                    +"\n \n Swim to the beach - swim back to the beach, leaving those coins."
+                }
+                if(jungle > -1){
+                    output.value = output.value + "\n \n"
+                }
+                if(camp > -1){
+                    output.value = output.value + "\n \nYou set up camp, creating a kind of HQ. You set it up pretty quickly, meaning there is still time to do something else"
+                    +"\n \n Walk into the jungle - To the jungle for treasure."
+                    +"\n \n Go for a swim - dive for treaure!"
+                    +"\n \n Walk the beach - explore the surrounding area."
+                }
+                if(camp <= -1 && jungle <= -1 && swim <= -1 && beach <= -1){
+                    --next;
+                    alert("invalid response");
+                }
             }
         }
         ++next;
